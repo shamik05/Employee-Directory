@@ -1,13 +1,13 @@
 import React from "react";
 
-function Row(props) {
+function Row({image, name, phone, email, dob}) {
   return (
     <tr>
-      <td><img src={props["picture.large"]} alt="Employee thumbnail"/></td>
-      <td>{props["name.first"]} {props["name.last"]}</td>
-      <td>{props.phone}</td>
-      <td>{props.email}</td>
-      <td>{props["dob.date"]}</td>
+      <td><img src={image} alt="Employee thumbnail"/></td>
+      <td>{name}</td>
+      <td>{phone}</td>
+      <td>{email}</td>
+      <td>{dob}</td>
     </tr>
   )
 }

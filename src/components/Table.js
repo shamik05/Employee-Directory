@@ -1,41 +1,33 @@
 import React, { useState, useEffect } from "react";
-import employeedata from "../data/employee.json";
 import Row from "./Row";
 import Thead from "./Thead";
 import "../styles/Table.css";
+import API from "../utils/API";
 
 function Table() {
-  // console.log(employeedata);
+  const [search, setSearch] = useState("");
+  const [employees, setEmployees] = useState(API.show);
 
-  const [employees, setEmployees] = useState(employeedata)
-  
-
-  // useEffect(() => {
-  //   setEmployees(employeedata);
-  // }, [])
+  useEffect(() => {
+    setEmployees(API.search(search));
+  }, [search])
 
   function handleInputChange(event) {
-    const { value } = event.target;
-    // console.log(value);
-    setEmployees(employeedata.filter(element => {
-      return element["name.first"].includes(value);
-    }));
+    setSearch(event.target.value);
   };
 
   return (
     <>
     <input 
       type="text"
-      name="search"
       placeholder="Search here"
       onChange={handleInputChange}
     />
 
     <table>
       <Thead />
-
       <tbody>
-        {employees.map((element,index) => {
+        {employees.map((element, index) => {
           return <Row key={index}{...element}/>
         })}
     </tbody>
