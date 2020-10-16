@@ -3,6 +3,7 @@ body {
   padding: 0;
 }
 
+/* Top section of page */
 #banner {
   text-align: center;
   margin: 0;
@@ -11,6 +12,7 @@ body {
   background-color: #0f1d41;
 }
 
+/* Heading texts within the banner */
 h1 {
   margin: 0;
   padding: 25px;
@@ -21,17 +23,20 @@ h2 {
   padding-bottom: 25px;
 }
 
+/* Input textbox */
 input {
   margin: 25px auto 0 auto;
   display: flex;
   font-size: larger;
 }
 
+/* Bottom border for table headings */
 thead th {
   border-bottom: 2px solid black;
   padding-bottom: 20px;
 }
 
+/* Table */
 table {
   width: 100%;
   padding-left: 40px;
@@ -43,6 +48,7 @@ td, input {
   text-align: center;
 }
 
+/* Font awesome icon properties when rendering by unicode */
 .icon::before {
   display: inline-block;
   font-style: normal;
@@ -51,6 +57,7 @@ td, input {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Renders an up or down arrow depending on the button's class and after it is clicked */
 thead button.ASC::after {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;

@@ -4,48 +4,75 @@ import Thead from "./Thead";
 import "../styles/Table.css";
 import API from "../utils/API";
 
+// Table component
 function Table() {
+  // Save input text as search state
   const [search, setSearch] = useState("");
+
+  // Employee data saved as a state. By default it loads the array returned from the show function the API.js
   const [employees, setEmployees] = useState(API.show);
+
+  // Sorting field and direction saved as a state. By default the first direction will be in ascending order
   const [sortType, setSortType] = useState({ type: null, direction: "ASC" });
+
+  // Function that passes the sorting direction to the heading component Takes column heading as an argument
   const getDirection = name => {
+    // Check if the sort state exists
     if (!sortType) {
       return;
     }
+    // Return direction to be used as the button's class. CSS renders up or down arrow depending on the current sort direction
     return sortType.type === name ? sortType.direction : undefined;
   };
 
+  // If the input text changes then run the search function and set the results in the employee state
   useEffect(() => {
     setEmployees(API.search(search));
   }, [search])
 
+  // Event listener to set the search state when the input value changes
   const handleInputChange = event => {
     setSearch(event.target.value);
   };
   
+  // If sort state changes then run sort function and set the results in the employee state
   useEffect(() => {
     setEmployees(API.sorting(sortType.type, sortType.direction))
   },[sortType])
 
+  // The following is based on Kristofer Giltvedt Selbekk's article of Creating Sortable Tables with React
+  // https://www.smashingmagazine.com/2020/03/sortable-tables-react/
+  // Event listener when column heading is clicked
   const handleSort = heading => {
+    // By default the direction is in ascending order
     let direction = "ASC";
+    // Check if sort state exists, the button clicked matches with current sort heading and if current sort direction is ascending
     if(sortType && sortType.type === heading && sortType.direction === "ASC"){
+      // If above condition is true this means the button was clicked twice consecutively then set direction as descending 
       direction = "DSC";
     }
+    // Save sort state with a column name and direction
     setSortType({ type: heading, direction: direction })
   };
 
   return (
     <>
+    {/* Input textbox for searching with an onchange handler */}
     <input 
       type="text"
       placeholder="Search here"
       onChange={handleInputChange}
     />
+    {/* Render the table */}
     <table>
+      {/* Render the table headings with an event handler and sort direction as classname passed as props*/}
       <Thead handleSort={handleSort} getDirection={getDirection}/>
+
+      {/* Rest of the table */}
       <tbody>
+        {/* Take the employee array from the employee state and render a row component for each element */}
         {employees.map((element, index) => {
+          // Pass current index and spread the object within the current element as props
           return <Row key={index}{...element}/>
         })}
       </tbody>
@@ -54,4 +81,5 @@ function Table() {
   )
 }
 
+// Export the component
 export default Table;

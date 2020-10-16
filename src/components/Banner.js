@@ -1,5 +1,6 @@
 import React from "react";
 
+// Top portion of page
 function Banner() {
   return (
     <div id="banner">
@@ -9,4 +10,5 @@ function Banner() {
   )
 }
 
+// Export the component
 export default Banner;

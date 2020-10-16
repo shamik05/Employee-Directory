@@ -1,5 +1,6 @@
 import React from "react";
 
+// Row component that renders employee details given an employee object
 function Row({image, name, phone, email, dob}) {
   return (
     <tr>
@@ -12,4 +13,5 @@ function Row({image, name, phone, email, dob}) {
   )
 }
 
+// Export the component
 export default Row;
