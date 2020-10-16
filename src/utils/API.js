@@ -23,5 +23,18 @@ export default {
         return search.test(e)
       })
     })
-  } 
+  },
+  sorting: function(heading, direction){
+    console.log(heading, direction)
+    return this.show().sort((x, y) => {
+      if(x[heading] < y[heading]) {
+        return direction === "ASC" ? -1 : 1;
+      }
+
+      if (x[heading] > y[heading]) {
+        return direction === "ASC" ? 1 : -1;
+      }
+      return 0;
+    })
+  }
 }
