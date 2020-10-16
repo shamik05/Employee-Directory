@@ -7,9 +7,13 @@ import API from "../utils/API";
 function Table() {
   const [search, setSearch] = useState("");
   const [employees, setEmployees] = useState(API.show);
-  const [sortType, setSortType] = useState({
-    type: null, direction: "ASC"
-  });
+  const [sortType, setSortType] = useState({ type: null, direction: "ASC" });
+  const getDirection = name => {
+    if (!sortType) {
+      return;
+    }
+    return sortType.type === name ? sortType.direction : undefined;
+  };
 
   useEffect(() => {
     setEmployees(API.search(search));
@@ -38,14 +42,13 @@ function Table() {
       placeholder="Search here"
       onChange={handleInputChange}
     />
-    <h1>{sortType.direction} {sortType.type}</h1>
     <table>
-      <Thead handleSort={handleSort}/>
+      <Thead handleSort={handleSort} getDirection={getDirection}/>
       <tbody>
         {employees.map((element, index) => {
           return <Row key={index}{...element}/>
         })}
-    </tbody>
+      </tbody>
     </table>
     </>
   )
