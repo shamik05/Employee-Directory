@@ -1,7 +1,7 @@
 # Reacting-for-Employees
 ![GitHub License](https://img.shields.io/badge/License-None-blue)
 ## Description
-This app is an employee tracker built with the React framework. The app allows you to view all employees and their details. Details can be sorted both ways by column headers. Also, searches have been implemented allowing you to search for any value. The app imports employee data from a json file. Finally, the app is hosted on github [here]().
+This app is an employee tracker built with the React framework. The app allows you to view all employees and their details. Details can be sorted both ways by column headers. Also, searches have been implemented allowing you to search for any value. The app imports employee data from a json file from [Random User](https://randomuser.me/). Credit also goes to Kristofer Giltvedt Selbekk and his article [Creating Sortable Tables with React](https://www.smashingmagazine.com/2020/03/sortable-tables-react/) which helped immensely when designing the sort feature. Finally, the app is hosted on github [here](https://shamik05.github.io/19-Reacting-for-Employees/).
 ## Table of Contents
 * [Installation](#Installation)
 * [Usage](#Usage)
@@ -20,7 +20,11 @@ npm start
 ```
 Each module's functions have also been demo-ed below.
 ![Main](assets/main.gif)
+
+
 ![Filter](assets/search.gif)
+
+
 ![Sort](assets/sort.gif)
 ## License 
 The project is currently licenseless.
