@@ -6,10 +6,10 @@ import Table from "./components/Table";
 function App() {
   return (
     <>
-    <Banner />
-    <Table />
+      <Banner />
+      <Table />
     </>
-  )
+  );
 }
 
 export default App;
