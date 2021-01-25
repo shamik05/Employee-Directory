@@ -2,7 +2,7 @@
   "name": "reactemployee",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://shamik05.github.io/Reacting-for-Employees",
+  "homepage": "https://github.com/shamik05/Employee-Directory",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
