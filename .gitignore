@@ -24,3 +24,7 @@ yarn-error.log*
 
 Instructions.md
 .env
+
+# ...
+.next
+next-env.d.ts

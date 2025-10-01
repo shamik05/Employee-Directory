@@ -76,7 +76,7 @@ function Table() {
           {/* Take the employee array from the employee state and render a row component for each element */}
           {employees.map((element) =>
           // Pass current index and spread the object within the current element as props
-            <Row key={element} {...element} />)}
+            <Row key={element.name} {...element} />)}
         </tbody>
       </table>
     </>
