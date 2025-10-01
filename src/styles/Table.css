@@ -1,3 +1,9 @@
+/* DEBUG OUTLINES - comment/uncomment this block as needed */
+* {
+  outline: 1px solid rgba(0, 255, 0, 0.3) !important;
+}
+/* END DEBUG OUTLINES */
+
 body {
   margin: 0;
   padding: 0;

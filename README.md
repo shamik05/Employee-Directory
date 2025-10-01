@@ -16,7 +16,7 @@ npm i
 ## Usage 
 Type the following in any CLI to run the app. 
 ```
-npm start
+npm run dev
 ```
 Each module's functions have also been demo-ed below.
 ![Main](assets/main.gif)
@@ -31,4 +31,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](/LICENSE.m
 ## Contributing
 Message the owner on github or by email. See [CONTRIBUTING.md](/Contributing.md)
 ## Questions 
-If you have any questions about the repo, open an issue or contact me directly at shamik05@hotmail.com. You can find more of my work at [shamik05](https://github.com/shamik05/).
+If you have any questions about the repo, open an issue or contact me directly at shamikhaldar05@gmail.com. You can find more of my work at [shamik05](https://github.com/shamik05/).
