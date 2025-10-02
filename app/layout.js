@@ -6,7 +6,7 @@ export const metadata = {
   description: "React app to track employee data"
 }
 
-export default function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body>
@@ -21,3 +21,5 @@ export default function RootLayout({ children }) {
 
   );
 }
+
+export default RootLayout;

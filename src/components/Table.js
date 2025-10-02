@@ -1,14 +1,11 @@
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable consistent-return */
-/* eslint-disable max-len */
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Row from "./Row";
 import Thead from "./Thead";
 import "../styles/Table.css";
 import API from "../utils/API";
 
 // Table component
-function Table() {
+const Table = () => {
   // Save input text as search state
   const [search, setSearch] = useState("");
 

@@ -1,10 +1,8 @@
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable max-len */
 // Get data from json file
 import employeedata from "../data/employee.json";
 
 // The following are functions related to displaying, filtering and sorting data.
-export default {
+const employeeUtil = {
   // Return employeedata as an array and trim it to 6 fields
   show: () =>
     // Map over employeedata
@@ -57,3 +55,5 @@ export default {
     });
   },
 };
+
+export default employeeUtil;

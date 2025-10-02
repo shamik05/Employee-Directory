@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 const App = dynamic(() => import('../../src/App'), { ssr: false })
 
-export function ClientOnly() {
+export const ClientOnly = () => {
     const router = useRouter();
 
     useEffect(() => {

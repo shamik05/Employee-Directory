@@ -1,7 +1,5 @@
-import React from "react";
-
 // Top portion of page
-function Banner() {
+const Banner = () => {
   return (
     <div id="banner">
       <h1>Employee Directory</h1>

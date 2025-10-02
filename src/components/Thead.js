@@ -1,9 +1,5 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable max-len */
-import React from "react";
-
 // Component rendering all column headings as clickable buttons
-function Thead({ handleSort, getDirection }) {
+const Thead = ({ handleSort, getDirection }) => {
   return (
     <thead>
       <tr>

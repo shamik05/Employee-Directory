@@ -1,9 +1,7 @@
-import React from "react";
-
 // Row component that renders employee details given an employee object
-function Row({
+const Row = ({
   image, name, phone, email, dob,
-}) {
+}) => {
   return (
     <tr>
       <td><img src={image} alt="Employee thumbnail" /></td>

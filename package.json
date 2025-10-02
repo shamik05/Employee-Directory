@@ -12,7 +12,7 @@
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev --turbopack",
     "build": "next build",
     "start": "npx serve@latest ./build",
-    "lint": "eslint"
+    "lint": "next lint"
   },
   "browserslist": {
     "production": [
@@ -28,6 +28,9 @@
   },
   "devDependencies": {
     "cross-env": "^10.1.0",
+    "eslint": "9.36.0",
+    "eslint-config-next": "15.5.4",
+    "eslint-config-prettier": "^10.1.8",
     "typescript": "5.9.3"
   }
 }
