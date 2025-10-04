@@ -29,7 +29,7 @@ describe("Component Thead", () => {
         )
 
         tableHeaders.forEach(({ label }) => {
-            expect(screen.getByRole("button", { name: label})).toBeInTheDocument;
+            expect(screen.getByRole("button", { name: label})).toBeInTheDocument();
         })
     })
 
@@ -43,10 +43,10 @@ describe("Component Thead", () => {
             </table>
         )
 
-        tableHeaders.forEach(async ({ label, key }) => {
+        for (const { label, key } of tableHeaders) {
             await user.click(screen.getByRole("button", { name: label }))
             expect(mockSetSort).toHaveBeenCalledWith(key);
-        })
+        }            
     })
 
     test("checks css upon button click", async () => {
@@ -61,5 +61,39 @@ describe("Component Thead", () => {
                 <Thead handleSort={mockSetSort} getDirection={mockGetSort} />
             </table>
         )
+
+        const nameBtn = screen.getByRole("button", { name: "Name" });
+        const emailBtn = screen.getByRole("button", { name: "Email" });
+        const phoneBtn = screen.getByRole("button", { name: "Phone" });
+
+        expect(nameBtn).toHaveClass("asc");
+        expect(emailBtn).toHaveClass("desc");
+        expect(phoneBtn).not.toHaveClass("asc");
+        expect(phoneBtn).not.toHaveClass("desc");
+    })
+
+    test("check table structure", () => {
+        mockGetSort.mockReturnValue("");
+
+        render(
+            <table>
+                <Thead handleSort={mockSetSort} getDirection={mockGetSort} />
+            </table>
+        );
+
+        expect(screen.getAllByRole("columnheader")).toHaveLength(tableHeaders.length + 1);
+    })
+
+    test("check image header", () => {
+        mockGetSort.mockReturnValue("");
+
+        render(
+            <table>
+                <Thead handleSort={mockSetSort} getDirection={mockGetSort} />
+            </table>
+        )
+
+        const imgHeader = screen.getAllByRole("columnheader").find(header => header.textContent === "");
+        expect(imgHeader).toBeInTheDocument();
     })
 })
