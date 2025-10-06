@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Row from "./Row";
 import Thead from "./Thead";
 import "../styles/Table.css";
@@ -11,6 +11,44 @@ const Table = () => {
 
   // Employee data state. Default loads the array returned from the show function the API.js
   const [employees, setEmployees] = useState(API.show);
+  const [visibleEmployees, setVisibleEmployees] = useState([]);
+  const [page, setPage] = useState(0);
+  const loaderRef = useRef(null);
+  const size = 5;
+
+  useEffect(() => {
+    setVisibleEmployees(employees.slice(0, size));
+    setPage(1)
+  }, [employees]);
+
+  useEffect(() => {
+    if (!loaderRef.current) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) loadNext();
+    },
+    { threshold: 0.1, rootMargin: "50px" }
+    );
+
+    observer.observe(loaderRef.current);
+
+    return () => {
+      if (loaderRef.current) observer.unobserve(loaderRef.current);
+    }
+  }, [employees, page]);
+
+  const loadNext = () => {
+    const startIndex = page * size;
+    const endIndex = startIndex + size;
+
+    if (startIndex >= employees.length) return;
+
+    const nextSet = employees.slice(startIndex, endIndex);
+    setVisibleEmployees(prev => [...prev, ...nextSet]);
+    setPage(prev => prev + 1);
+  }
+
+  const loadLeft = visibleEmployees.length < employees.length;
 
   // Sorting field and direction saved as state. Default first direction will be in ascending order
   const [sortType, setSortType] = useState({ type: null, direction: "ASC" });
@@ -28,6 +66,7 @@ const Table = () => {
   // If the input text changes then set the results in the employee state
   useEffect(() => {
     setEmployees(API.search(search));
+    setPage(0);
   }, [search]);
 
   // Event listener to set the search state when the input value changes
@@ -71,9 +110,17 @@ const Table = () => {
         {/* Rest of the table */}
         <tbody>
           {/* Take the employee array from the employee state and render a row component for each element */}
-          {employees.map((element) =>
+          {visibleEmployees.map((element, index) =>
           // Pass current index and spread the object within the current element as props
-            <Row key={element.name} {...element} />)}
+            <Row key={`${element.email}-${index}`} {...element} />)}
+          
+          {loadLeft && (
+            <tr ref={loaderRef}>
+              <td colSpan="5" style={{ textAlign: "center", padding: "10px" }}>
+                Load more employees...
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </>
