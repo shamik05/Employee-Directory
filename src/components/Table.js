@@ -14,7 +14,7 @@ const Table = () => {
   const [visibleEmployees, setVisibleEmployees] = useState([]);
   const [page, setPage] = useState(0);
   const loaderRef = useRef(null);
-  const size = 5;
+  const size = 2;
 
   useEffect(() => {
     setVisibleEmployees(employees.slice(0, size));
